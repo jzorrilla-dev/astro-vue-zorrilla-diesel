@@ -1,0 +1,168 @@
+---
+import BoschIcon from './icons/BoschIcon.astro'
+import CaterpillarIcon from './icons/CaterpillarIcon.astro'
+import CumminsIcon from './icons/CumminsIcon.astro'
+import DensoIcon from './icons/DensoIcon.astro'
+import JonhDeereIcon from './icons/JonhDeereIcon.astro'
+import MercedesIcon from './icons/MercedesIcon.astro'
+import SiemensIcon from './icons/SiemensIcon.astro'
+import ScaniaIcon from './icons/ScaniaIcon.astro'
+import NissanIcon from './icons/NissanIcon.astro'
+import ToyotaIcon from './icons/ToyotaIcon.astro'
+import FordIcon from './icons/FordIcon.astro'
+import ChevroletIcon from './icons/ChevroletIcon.astro'
+
+type IconKey = keyof typeof iconMap
+
+const iconMap = {
+  bosch: BoschIcon,
+  caterpillar: CaterpillarIcon,
+  cummins: CumminsIcon,
+  denso: DensoIcon,
+  johnDeere: JonhDeereIcon,
+  mercedes: MercedesIcon,
+  siemens: SiemensIcon,
+  scania: ScaniaIcon,
+  nissan: NissanIcon,
+  toyota: ToyotaIcon,
+  ford: FordIcon,
+  chevrolet: ChevroletIcon
+}
+
+// Lista de todas las especialidades con sus respectivos iconos
+const allSpecialties: { name: string; icon: IconKey }[] = [
+  { name: 'Toyota', icon: 'toyota' },
+  { name: 'Nissan', icon: 'nissan' },
+  { name: 'Caterpillar', icon: 'caterpillar' },
+  { name: 'Cummins', icon: 'cummins' },
+  { name: 'Denso', icon: 'denso' },
+  { name: 'John Deere', icon: 'johnDeere' },
+  { name: 'Mercedes-Benz', icon: 'mercedes' },
+  { name: 'Siemens', icon: 'siemens' },
+  { name: 'Scania', icon: 'scania' },
+  { name: 'Bosch', icon: 'bosch' },
+  { name: 'Ford', icon: 'ford' },
+  { name: 'Chevrolet', icon: 'chevrolet' }
+]
+
+// Dividir la lista en dos sub-arrays
+const specialtiesRow1 = allSpecialties.slice(0, 6)
+const specialtiesRow2 = allSpecialties.slice(6, 12)
+---
+
+<section
+  id="especialidades"
+  class="py-20 sm:py-32 bg-gray-50 dark:bg-gray-900 transition-colors duration-500"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2
+      class="text-4xl font-extrabold text-gray-900 dark:text-white mb-16 text-center"
+    >
+      Nuestras Especialidades
+    </h2>
+
+    {/* WRAPPER DE LA FILA 1 (MOVIMIENTO A LA IZQUIERDA) */}
+    <div class="overflow-hidden mb-8">
+      <div
+        class="flex whitespace-nowrap animate-skill-scroll-left hover:paused"
+      >
+        {/* Contenido Original */}
+        {
+          specialtiesRow1.map(({ name, icon }) => {
+            // Usar el string 'icon' para encontrar el componente real en el map.
+            const IconComponent = iconMap[icon]
+
+            // Confirmar que el componente existe antes de renderizar (manejo de errores)
+            if (!IconComponent) return null
+
+            return (
+              <div class="inline-block flex-shrink-0 w-[calc(100%/6)] p-2">
+                <div class="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg hover:shadow-emerald-500/50 transition duration-400 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
+                  <div class="w-12 h-12 mb-3 flex items-center justify-center">
+                    <IconComponent />
+                  </div>
+                  <p class="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                    {name}
+                  </p>
+                </div>
+              </div>
+            )
+          })
+        }
+
+        {/* Contenido Duplicado */}
+        {
+          specialtiesRow1.map(({ name, icon }) => {
+            // Usar el string 'icon' para encontrar el componente real en el map.
+            const IconComponent = iconMap[icon]
+
+            if (!IconComponent) return null
+
+            return (
+              <div class="inline-block flex-shrink-0 w-[calc(100%/6)] p-2">
+                <div class="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg hover:shadow-emerald-500/50 transition duration-400 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
+                  <div class="w-12 h-12 mb-3 flex items-center justify-center">
+                    <IconComponent />
+                  </div>
+                  <p class="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                    {name}
+                  </p>
+                </div>
+              </div>
+            )
+          })
+        }
+      </div>
+    </div>
+    {/* WRAPPER DE LA FILA 2 (MOVIMIENTO A LA DERECHA) */}
+
+    <div class="overflow-hidden">
+      <div
+        class="flex whitespace-nowrap animate-skill-scroll-right hover:paused"
+      >
+        {
+          specialtiesRow2.map(({ name, icon }) => {
+            const IconComponent = iconMap[icon]
+
+            if (!IconComponent) return null
+
+            return (
+              <div class="inline-block flex-shrink-0 w-[calc(100%/6)] p-2">
+                <div class="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg hover:shadow-emerald-500/50 transition duration-400 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
+                  <div class="w-12 h-12 mb-3 flex items-center justify-center">
+                    <IconComponent />
+                  </div>
+                  <p class="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                    {name}
+                  </p>
+                </div>
+              </div>
+            )
+          })
+        }
+
+        {
+          // Este map renderiza cada icono-especialidad duplicado para crear el efecto de movimiento infinito.
+          specialtiesRow2.map(({ name, icon }) => {
+            const IconComponent = iconMap[icon]
+
+            if (!IconComponent) return null
+
+            return (
+              <div class="inline-block flex-shrink-0 w-[calc(100%/6)] p-2">
+                <div class="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg hover:shadow-emerald-500/50 transition duration-400 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
+                  <div class="w-12 h-12 mb-3 flex items-center justify-center">
+                    <IconComponent />
+                  </div>
+                  <p class="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                    {name}
+                  </p>
+                </div>
+              </div>
+            )
+          })
+        }
+      </div>
+    </div>
+  </div>
+</section>

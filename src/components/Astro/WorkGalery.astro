@@ -1,0 +1,96 @@
+---
+interface WorkItem {
+  id: string
+  title: string
+  image?: string
+  description: string
+}
+
+const workItems: WorkItem[] = [
+  {
+    id: '1',
+    title: 'Cummins KTA-38',
+    image: '/images/photo-workshop1.jpeg',
+    description: 'Bomba Cummins KTA-38 montada en un Generador.'
+  },
+  {
+    id: '2',
+    title: 'Caterpillar 3406',
+    image: '/images/photo-workshop2.jpeg',
+    description:
+      'Bomba Caterpillar motor 3406 apunto de ser desarmada para un matenimiento.'
+  },
+  {
+    id: '3',
+    title: 'Bomba Stanadyne',
+    image: '/images/photo-workshop3.jpeg',
+    description: 'Bomba rotativa Stanadyne montada en un banco de pruebas.'
+  },
+  {
+    id: '4',
+    title: 'Bomba lineal Bosch',
+    image: '/images/photo-workshop4.jpeg',
+    description:
+      'Bomba lineal Bosch a punto de ser calibrada en un banco de pruebas.'
+  },
+  {
+    id: '5',
+    title: 'Bomba Bosch',
+    image: '/images/photo-workshop5.jpeg',
+    description: 'Bomba rotativa Bosch tipo VE.'
+  },
+  {
+    id: '6',
+    title: 'Bomba Stanadyne',
+    image: '/images/photo-workshop6.jpeg',
+    description:
+      'Bomba rotativa Stanadyne de un generador en proceso de calibración.'
+  }
+]
+---
+
+<section id="galeria" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Galería de trabajos
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Conozca la calidad de nuestros servicios y la tecnología que utilizamos
+        en cada reparación.
+      </p>
+      <div class="w-24 h-1 bg-bosch mx-auto mt-6 rounded-full"></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        workItems.map((item) => (
+          <div class="group relative overflow-hidden rounded-xl shadow-lg aspect-video bg-gray-200 hover:shadow-xl transition-all duration-300">
+            {/* Imagen de fondo */}
+            <img
+              src={item.image}
+              alt={item.title}
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+
+            {/* Overlay con gradiente */}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+
+            {/* Contenido */}
+            <div class="absolute inset-0 p-6 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+              <h3 class="text-xl font-bold text-white mb-2 border-l-4 border-bosch pl-3">
+                {item.title}
+              </h3>
+              <p class="text-gray-200 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                {item.description}
+              </p>
+            </div>
+
+            {/* Borde decorativo Bosch */}
+            <div class="absolute top-0 left-0 w-full h-1 bg-bosch transform -translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
