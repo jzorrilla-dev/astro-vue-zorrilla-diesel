@@ -21,8 +21,8 @@ export default {
         }
       },
       animation: {
-        'skill-scroll-left': 'scroll-left 50s linear infinite',
-        'skill-scroll-right': 'scroll-right 50s linear infinite'
+        'skill-scroll-left': 'scroll-left 25s linear infinite',
+        'skill-scroll-right': 'scroll-right 25s linear infinite'
       }
     }
   },

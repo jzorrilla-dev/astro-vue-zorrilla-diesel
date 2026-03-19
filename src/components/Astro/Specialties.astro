@@ -44,95 +44,35 @@ const allSpecialties: { name: string; icon: IconKey }[] = [
   { name: 'Ford', icon: 'ford' },
   { name: 'Chevrolet', icon: 'chevrolet' }
 ]
-
-// Dividir la lista en dos sub-arrays
-const specialtiesRow1 = allSpecialties.slice(0, 6)
-const specialtiesRow2 = allSpecialties.slice(6, 12)
 ---
 
 <section
-  id="especialidades"
+  id="habilidades"
   class="py-20 sm:py-32 bg-gray-50 dark:bg-gray-900 transition-colors duration-500"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <h2
       class="text-4xl font-extrabold text-gray-900 dark:text-white mb-16 text-center"
     >
-      Nuestras Especialidades
+      Mi Stack Tecnológico
     </h2>
-
-    {/* WRAPPER DE LA FILA 1 (MOVIMIENTO A LA IZQUIERDA) */}
-    <div class="overflow-hidden mb-8">
-      <div
-        class="flex whitespace-nowrap animate-skill-scroll-left hover:paused"
-      >
-        {/* Contenido Original */}
-        {
-          specialtiesRow1.map(({ name, icon }) => {
-            // Usar el string 'icon' para encontrar el componente real en el map.
-            const IconComponent = iconMap[icon]
-
-            // Confirmar que el componente existe antes de renderizar (manejo de errores)
-            if (!IconComponent) return null
-
-            return (
-              <div class="inline-block flex-shrink-0 w-[calc(100%/6)] p-2">
-                <div class="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg hover:shadow-emerald-500/50 transition duration-400 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
-                  <div class="w-12 h-12 mb-3 flex items-center justify-center">
-                    <IconComponent />
-                  </div>
-                  <p class="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                    {name}
-                  </p>
-                </div>
-              </div>
-            )
-          })
-        }
-
-        {/* Contenido Duplicado */}
-        {
-          specialtiesRow1.map(({ name, icon }) => {
-            // Usar el string 'icon' para encontrar el componente real en el map.
-            const IconComponent = iconMap[icon]
-
-            if (!IconComponent) return null
-
-            return (
-              <div class="inline-block flex-shrink-0 w-[calc(100%/6)] p-2">
-                <div class="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg hover:shadow-emerald-500/50 transition duration-400 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
-                  <div class="w-12 h-12 mb-3 flex items-center justify-center">
-                    <IconComponent />
-                  </div>
-                  <p class="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                    {name}
-                  </p>
-                </div>
-              </div>
-            )
-          })
-        }
-      </div>
-    </div>
-    {/* WRAPPER DE LA FILA 2 (MOVIMIENTO A LA DERECHA) */}
 
     <div class="overflow-hidden">
       <div
-        class="flex whitespace-nowrap animate-skill-scroll-right hover:paused"
+        class="flex gap-4 sm:gap-6 whitespace-nowrap animate-skill-scroll-left hover:paused"
       >
         {
-          specialtiesRow2.map(({ name, icon }) => {
+          allSpecialties.map(({ name, icon }) => {
             const IconComponent = iconMap[icon]
-
             if (!IconComponent) return null
 
             return (
-              <div class="inline-block flex-shrink-0 w-[calc(100%/6)] p-2">
-                <div class="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg hover:shadow-emerald-500/50 transition duration-400 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
-                  <div class="w-12 h-12 mb-3 flex items-center justify-center">
+              <div class="flex-shrink-0 min-w-[140px] sm:min-w-[160px] md:min-w-[180px] p-2">
+                <div class="flex flex-col items-center p-4 sm:p-6 bg-gray-100 dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700">
+                  <div class="w-14 h-14 sm:w-16 sm:h-16 mb-3 sm:mb-4 flex items-center justify-center">
                     <IconComponent />
                   </div>
-                  <p class="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                  <p class="text-sm sm:text-base md:text-lg font-semibold text-gray-800 dark:text-gray-200 text-center">
                     {name}
                   </p>
                 </div>
@@ -142,19 +82,17 @@ const specialtiesRow2 = allSpecialties.slice(6, 12)
         }
 
         {
-          // Este map renderiza cada icono-especialidad duplicado para crear el efecto de movimiento infinito.
-          specialtiesRow2.map(({ name, icon }) => {
+          allSpecialties.map(({ name, icon }) => {
             const IconComponent = iconMap[icon]
-
             if (!IconComponent) return null
 
             return (
-              <div class="inline-block flex-shrink-0 w-[calc(100%/6)] p-2">
-                <div class="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg hover:shadow-emerald-500/50 transition duration-400 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
-                  <div class="w-12 h-12 mb-3 flex items-center justify-center">
+              <div class="flex-shrink-0 min-w-[140px] sm:min-w-[160px] md:min-w-[180px] p-2">
+                <div class="flex flex-col items-center p-4 sm:p-6 bg-gray-100 dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700">
+                  <div class="w-14 h-14 sm:w-16 sm:h-16 mb-3 sm:mb-4 flex items-center justify-center">
                     <IconComponent />
                   </div>
-                  <p class="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                  <p class="text-sm sm:text-base md:text-lg font-semibold text-gray-800 dark:text-gray-200 text-center">
                     {name}
                   </p>
                 </div>
