@@ -126,7 +126,7 @@ const error = ref(false)
 
 // IMPORTANTE: Reemplaza 'YOUR_FORM_ID' con tu ID real de Formspree
 // Puedes obtenerlo creando un nuevo formulario en https://formspree.io/
-const PUBLIC_FORMSPREE_ENDPOINT = import.meta.env.PUBLIC_FORMSPREE_ENPOINT
+const PUBLIC_FORMSPREE_ENDPOINT = import.meta.env.PUBLIC_FORMSPREE_ENDPOINT
 
 const handleSubmit = async () => {
   isSubmitting.value = true
