@@ -72,7 +72,7 @@
           required
           rows="4"
           class="w-full px-4 py-3 rounded-lg bg-white/90 text-gray-900 border-2 border-transparent focus:border-white focus:outline-none focus:bg-white transition-all resize-none"
-          placeholder="Cuéntanos qué le sucede a tu vehículo..."
+          placeholder="Contanos que le sucede a tu vehículo o máquina..."
         ></textarea>
       </div>
 
@@ -92,7 +92,7 @@
       >
         <p class="font-semibold">¡Gracias por contactarnos!</p>
         <p class="text-sm text-green-100 mt-1">
-          Te responderemos a la brevedad
+          Te responderemos en la brevedad posible
         </p>
       </div>
 
