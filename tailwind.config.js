@@ -3,7 +3,7 @@ export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
-      screens: { nav: '900px', xs: '400px' },
+      screens: { nav: '900px', xs: '550px' },
       colors: {
         bosch: {
           DEFAULT: '#00885A', // Bosch Green
